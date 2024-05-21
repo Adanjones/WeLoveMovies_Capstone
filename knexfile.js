@@ -1,23 +1,28 @@
 const path = require("path");
-
 require("dotenv").config();
 
 const {
   DATABASE_URL = "postgresql://postgres@localhost/postgres",
+  RENDER_HOST,
+  RENDER_USER,
+  RENDER_PASSWORD,
+  RENDER_DATABASE,
 } = process.env;
+
+const renderConnection = {
+  host: RENDER_HOST,
+  user: RENDER_USER,
+  password: RENDER_PASSWORD,
+  database: RENDER_DATABASE,
+  ssl: {
+    rejectUnauthorized: false, // this will ignore self-signed certificates
+  },
+};
 
 module.exports = {
   development: {
     client: "pg",
-    connection: {
-      host: "dpg-cp571cocmk4c73etpn70-a.oregon-postgres.render.com",
-      user: "dev_xg5m_user",
-      password: "cx8Aicyqe5zNouA0kwOKOYn1s5BoncyH",
-      database: "dev_xg5m",
-      ssl: {
-        rejectUnauthorized: false // this will ignore self-signed certificates
-      }
-    },
+    connection: renderConnection,
     pool: { min: 0, max: 5 },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
