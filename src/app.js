@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Update this to match your frontend's URL
+  origin: 'http://localhost:5001', // Update this to match your frontend's URL
 }));
 
 app.use(morgan("dev"));
