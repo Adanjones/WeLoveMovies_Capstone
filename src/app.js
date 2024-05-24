@@ -12,6 +12,7 @@ const errorHandler = require("./errors/errorHandler");
 const notFound = require("./errors/notFound");
 
 const app = express();
+const port = process.env.PORT || 4000; // Use PORT environment variable
 
 app.use(express.json());
 
@@ -27,5 +28,9 @@ app.use("/theaters", theatersRouter);
 
 app.use(notFound);
 app.use(errorHandler);
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 module.exports = app;
