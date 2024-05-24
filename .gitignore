@@ -28,3 +28,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignore the database connection test script
+test-db-connection.js
