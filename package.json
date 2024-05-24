@@ -19,6 +19,9 @@
     "test": "jest",
     "test:solution": "docker-compose build && docker-compose run --rm api npm test && docker-compose down"
   },
+  "engines": {
+    "node": ">=18.19.1 <19.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
