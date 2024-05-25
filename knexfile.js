@@ -22,7 +22,12 @@ const renderConnection = {
 module.exports = {
   development: {
     client: "pg",
-    connection: renderConnection,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
     pool: { min: 0, max: 5 },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
@@ -34,7 +39,12 @@ module.exports = {
 
   production: {
     client: "postgresql",
-    connection: renderConnection,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
     pool: { min: 0, max: 5 },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
