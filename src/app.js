@@ -16,8 +16,10 @@ const { PORT = 5001 } = process.env; // Use PORT environment variable
 
 app.use(express.json());
 
+// Configure CORS to allow requests from your frontend
 app.use(cors({
-  origin: 'http://localhost:5001', // Update this to match your frontend's URL
+  origin: "https://welovemovies-frontend-srnh.onrender.com", // Update this to match your frontend's URL
+  optionsSuccessStatus: 200 // For legacy browser support
 }));
 
 app.use(morgan("dev"));
